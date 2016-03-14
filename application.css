@@ -1,0 +1,44 @@
+.tile {
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+  padding: 2px;
+  display: inline-block;
+}
+
+.flagged {
+  background-color: #bdc3c7;
+}
+
+.filled {
+  background-color: #8e44ad;
+}
+
+.left-hint-row {
+  height: 40px;
+}
+
+.left-hint-number {
+  width: 40px;
+  display: inline-block;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.top-hint-row {
+  width: 40px;
+  display: inline-block;
+}
+
+.top-hint-number {
+  height: 40px;
+  text-align: center;
+}
+
+.fifth-row {
+  border-top: 2px solid red;
+}
+
+.fifth-column {
+  border-left: 2px solid red;
+}
