@@ -25,7 +25,8 @@ const Tile = React.createClass({
     return (
       <div
         className={classNames}
-        onClick={this.handleClick}>
+        onClick={this.handleClick}
+      >
       </div>
     );
   }

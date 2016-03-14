@@ -6,10 +6,14 @@ const React = require('react'),
 
 const Game = React.createClass({
   getInitialState() {
-    const board = new PicCross.Board(10);
+    const board = this.newBoard();
     return {
       board: board
     };
+  },
+
+  newBoard() {
+    return new PicCross.Board(10);
   },
 
   updateGame(tile, isFlagging) {
@@ -20,15 +24,17 @@ const Game = React.createClass({
       board.toggleFill(tile);
     }
     this.setState({ board: board });
+  },
 
-    if (board.won()) {
+  componentDidUpdate() {
+    if (this.state.board.won()) {
       alert('You win!');
       this.reset();
     }
   },
 
   reset() {
-    const board = new PicCross.Board(10);
+    const board = this.newBoard();
     this.setState({ board: board });
   },
 

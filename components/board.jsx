@@ -17,10 +17,14 @@ const Board = React.createClass({
           tile={tile}
           updateGame={this.props.updateGame}
           key={j}
-          highlight={j % 5 === 0 && j !== 0}
+          highlight={this.isFifth(j)}
         />
       );
     });
+  },
+
+  isFifth(index) {
+    return (index % 5 === 0) && (index !== 0);
   },
 
   render() {
@@ -28,7 +32,10 @@ const Board = React.createClass({
       <div id="board">
         {this.props.board.grid.map( (row, i) => {
           return (
-            <div className={classnames('grid-row', {'fifth-row': i % 5 === 0 && i !== 0})} key={i}>
+            <div
+              className={classnames('grid-row', {'fifth-row': this.isFifth(i)})}
+              key={i}
+            >
               {this.tilesForRow(i)}
             </div>
           );
