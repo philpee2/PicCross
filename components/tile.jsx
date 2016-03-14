@@ -11,7 +11,7 @@ const Tile = React.createClass({
   },
 
   handleClick(e) {
-    this.props.updateGame(this.props.tile, e.altKey);
+    this.props.updateGame(this.props.tile, (e.altKey || e.metaKey || e.shiftKey) );
   },
 
   render() {
