@@ -2,7 +2,7 @@ const React = require('react'),
   Board = require('./board'),
   TopHint = require('./top-hint'),
   LeftHint = require('./left-hint'),
-  PicCross = require('../pic-cross');
+  BoardModel = require('../models/board');
 
 const Game = React.createClass({
   getInitialState() {
@@ -13,7 +13,7 @@ const Game = React.createClass({
   },
 
   newBoard() {
-    return new PicCross.Board(10);
+    return new BoardModel(10);
   },
 
   updateGame(tile, isFlagging) {

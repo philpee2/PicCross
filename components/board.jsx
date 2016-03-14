@@ -1,12 +1,12 @@
 const React = require('react'),
   Tile = require('./tile'),
-  PicCross = require('../pic-cross'),
+  BoardModel = require('../models/board'),
   classnames = require('classnames');
 
 const Board = React.createClass({
 
   propTypes: {
-    board: React.PropTypes.instanceOf(PicCross.Board).isRequired,
+    board: React.PropTypes.instanceOf(BoardModel).isRequired,
     updateGame: React.PropTypes.func.isRequired
   },
 
