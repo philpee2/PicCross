@@ -1,25 +1,23 @@
 const React = require('react');
 
-const LeftHint = React.createClass({
-  propTypes: {
-    hint: React.PropTypes.array.isRequired,
-  },
+function LeftHint({ hint }) {
+  return (
+    <div className="left-hint">
+      {hint.map((h, i) => {
+        return (
+          <div className="left-hint-row" key={i}>
+            {h.map((num, j) => {
+              return <span className="left-hint-number" key={j}>{num}</span>
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
-  render() {
-    return (
-      <div className="left-hint">
-        {this.props.hint.map((hint, i) => {
-          return (
-            <div className="left-hint-row" key={i}>
-              {hint.map((num, j) => {
-                return <span className="left-hint-number" key={j}>{num}</span>
-              })}
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-});
+LeftHint.propTypes = {
+  hint: React.PropTypes.array.isRequired,
+};
 
 module.exports = LeftHint;
