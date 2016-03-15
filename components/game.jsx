@@ -13,7 +13,7 @@ const Game = React.createClass({
   },
 
   newBoard() {
-    return new BoardModel(5);
+    return new BoardModel(10);
   },
 
   updateGame(tile, isFlagging) {
@@ -48,6 +48,7 @@ const Game = React.createClass({
     const board = this.state.board;
     return (
       <div>
+        {/* So so not proud of this */}
         <table>
           <thead></thead>
 
