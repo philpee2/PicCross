@@ -1,3 +1,5 @@
+// A Change represents a single action taken by the user. This can be toggling the fill or flag of
+// a single tile. Storing these Change objects allows for the undo functionality
 class Change {
 
   constructor(isFlag, pos) {
@@ -5,6 +7,7 @@ class Change {
     this.pos = pos;
   }
 
+  // Undo this change
   undo(board) {
     const tile = board.getTile(this.pos);
     if (this.isFlag) {

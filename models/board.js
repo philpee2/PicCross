@@ -16,6 +16,8 @@ class Board {
     return this.grid[pos[0]][pos[1]];
   }
 
+  // Create a random game solution for a given grid size. Each tile has a 50% chance of being
+  // filled
   randomSolution(gridSize) {
     const solution = [];
     for (let i = 0; i < gridSize; i++) {
@@ -28,6 +30,7 @@ class Board {
     return solution;
   }
 
+  // Create an empty 2D array of the given grid size, where every element is an empty Tile object
   generateBoard(gridSize) {
     const grid = [];
     for (let i = 0; i < gridSize; i++) {
@@ -40,6 +43,7 @@ class Board {
     return grid;
   }
 
+  // Toggle fill for the given tile, and add the change to the change stack
   toggleFill(tile) {
     const change = tile.toggleFill();
     if (change) {
@@ -47,6 +51,7 @@ class Board {
     }
   }
 
+  // Toggle flag for the given tile and add the change to the change stack
   toggleFlag(tile) {
     const change = tile.toggleFlag();
     if (change) {
@@ -54,6 +59,7 @@ class Board {
     }
   }
 
+  // Undo the last change on the change stack
   undo() {
     if (this.changeStack.length > 0) {
       const lastChange = this.changeStack.pop();
@@ -61,10 +67,13 @@ class Board {
     }
   }
 
+  // Returns whether the stack of change is empty. The undo button should be disabled if the
+  // stack is empty
   isChangeStackEmpty() {
     return this.changeStack.length === 0;
   }
 
+  // Returns true if the board represents the solution
   won() {
     const filledState = this.grid.map((row) => {
       return row.map((tile) => tile.filled);

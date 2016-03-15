@@ -12,6 +12,7 @@ function invert(grid) {
   return columns;
 }
 
+// A Hint represents the numbers shown to the player around the board.
 class Hint {
 
   constructor(rows) {
@@ -21,6 +22,7 @@ class Hint {
     this.vertical = columns.map((col) => Hint.countsForCells(col));
   };
 
+  // For an array of booleans, return an array of the numbers representing it as a hint
   static countsForCells(cells) {
     const result = [];
     let currentSequence = 0;
