@@ -42,3 +42,11 @@
 .fifth-column {
   border-left: 2px solid red;
 }
+
+.controls button {
+  margin: 5px;
+}
+
+.board-size-config {
+  margin: 5px;
+}

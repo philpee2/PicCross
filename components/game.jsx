@@ -6,14 +6,21 @@ const React = require('react'),
 
 const Game = React.createClass({
   getInitialState() {
-    const board = this.newBoard();
+    const initialBoardSize = 10;
+    const board = this.newBoard(initialBoardSize);
     return {
-      board: board
+      board: board,
+      boardSize: initialBoardSize,
     };
   },
 
-  newBoard() {
-    return new BoardModel(10);
+  newBoard(boardSize = this.state.boardSize) {
+    return new BoardModel(boardSize);
+  },
+
+  updateBoardSize(e) {
+    const newSize = Number(e.target.value);
+    this.setState({boardSize: newSize});
   },
 
   updateGame(tile, isFlagging) {
@@ -69,13 +76,33 @@ const Game = React.createClass({
             </tr>
           </tbody>
         </table>
-        <button
-          className="btn btn-success"
-          onClick={this.undo}
-          disabled={board.isChangeStackEmpty()}
-        >
-          Undo
-        </button>
+
+        <div className="controls">
+          <button
+            className="btn btn-success"
+            onClick={this.undo}
+            disabled={board.isChangeStackEmpty()}
+          >
+            Undo
+          </button>
+
+          <button
+            className="btn btn-success"
+            onClick={this.reset}
+          >
+            New board
+          </button>
+
+          <div className="board-size-config">
+            <div><strong>Board size</strong></div>
+            <input
+              type="number"
+              value={this.state.boardSize}
+              onChange={this.updateBoardSize}
+            />
+            <span> This will take effect when the next game starts</span>
+          </div>
+        </div>
       </div>
     );
   }
