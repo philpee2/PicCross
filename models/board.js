@@ -1,4 +1,4 @@
-const _ = require('lodash'),
+const { times, sample, isEqual } = require('lodash'),
   Hint = require('./hint'),
   Tile = require('./tile');
 
@@ -12,35 +12,31 @@ class Board {
     this.changeStack = [];
   }
 
+  // Get the Tile object at a given position
   getTile(pos) {
-    return this.grid[pos[0]][pos[1]];
+    const [x, y] = pos;
+    return this.grid[x][y];
   }
 
   // Create a random game solution for a given grid size. Each tile has a 50% chance of being
-  // filled
+  // filled. The solution is represented as a 2D array where true represents a filled tile and
+  // false represents an empty tile.
   randomSolution(gridSize) {
-    const solution = [];
-    for (let i = 0; i < gridSize; i++) {
-      solution.push([]);
-      for (let j = 0; j < gridSize; j++) {
-        solution[i].push(_.sample([true, false]))
-      }
-    }
-
-    return solution;
+    return times(gridSize, () => {
+      return times(gridSize, () => {
+        return sample([true, false]);
+      });
+    });
   }
 
-  // Create an empty 2D array of the given grid size, where every element is an empty Tile object
+  // Create an empty 2D array of the given grid size, where every element is a Tile object that is
+  // neither filled or flagged
   generateBoard(gridSize) {
-    const grid = [];
-    for (let i = 0; i < gridSize; i++) {
-      grid.push([]);
-      for (let j = 0; j < gridSize; j++) {
-        let tile = new Tile(this, [i, j]);
-        grid[i].push(tile);
-      }
-    }
-    return grid;
+    return times(gridSize, (i) => {
+      return times(gridSize, (j) => {
+        return new Tile(this, [i, j]);
+      });
+    });
   }
 
   // Toggle fill for the given tile, and add the change to the change stack
@@ -67,8 +63,6 @@ class Board {
     }
   }
 
-  // Returns whether the stack of change is empty. The undo button should be disabled if the
-  // stack is empty
   isChangeStackEmpty() {
     return this.changeStack.length === 0;
   }
@@ -78,7 +72,7 @@ class Board {
     const filledState = this.grid.map((row) => {
       return row.map((tile) => tile.filled);
     });
-    return _.isEqual(this.solution, filledState);
+    return isEqual(this.solution, filledState);
   }
 }
 

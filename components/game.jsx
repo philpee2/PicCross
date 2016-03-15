@@ -13,7 +13,7 @@ const Game = React.createClass({
   },
 
   newBoard() {
-    return new BoardModel(10);
+    return new BoardModel(5);
   },
 
   updateGame(tile, isFlagging) {

@@ -1,14 +1,14 @@
-function invert(grid) {
-  const columns = new Array(grid.length);
-  for (let k = 0; k < grid.length; k++) {
-    columns[k] = new Array(grid.length);
-  }
+const { times } = require('lodash');
 
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid.length; j++) {
+// Invert the given grid. This turns an array of rows into an array of columns
+function invert(grid) {
+  const columns = times(grid.length, () => new Array(grid.length));
+
+  times(grid.length, (i) => {
+    times(grid.length, (j) => {
       columns[j][i] = grid[i][j];
-    }
-  }
+    });
+  });
   return columns;
 }
 
