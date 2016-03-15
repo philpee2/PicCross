@@ -1,15 +1,19 @@
-var Change = function(isFlag, pos) {
-  this.isFlag = isFlag;
-  this.pos = pos;
-};
+class Change {
 
-Change.prototype.undo = function(board) {
-  var tile = board.getTile(this.pos);
-  if (this.isFlag) {
-    tile.toggleFlagDangerous();
-  } else {
-    tile.toggleFillDangerous();
+  constructor(isFlag, pos) {
+    this.isFlag = isFlag;
+    this.pos = pos;
   }
-};
+
+  undo(board) {
+    const tile = board.getTile(this.pos);
+    if (this.isFlag) {
+      tile.toggleFlagDangerous();
+    } else {
+      tile.toggleFillDangerous();
+    }
+  }
+}
+
 
 module.exports = Change;

@@ -1,51 +1,51 @@
 function invert(grid) {
-  var columns = new Array(grid.length);
-  for (var k = 0; k < grid.length; k++) {
+  const columns = new Array(grid.length);
+  for (let k = 0; k < grid.length; k++) {
     columns[k] = new Array(grid.length);
   }
 
-  for (var i = 0; i < grid.length; i++) {
-    for (var j = 0; j < grid.length; j++) {
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid.length; j++) {
       columns[j][i] = grid[i][j];
     }
   }
   return columns;
 }
 
-var Hint = function(rows) {
-  var columns = invert(rows);
+class Hint {
 
-  this.horizontal = rows.map(function(row) {
-    return Hint.countsForCells(row);
-  });
-  this.vertical = columns.map(function(col) {
-    return Hint.countsForCells(col);
-  });
-};
+  constructor(rows) {
+    const columns = invert(rows);
 
-Hint.countsForCells = function(cells) {
-  var result = [];
-  var currentSequence = 0;
+    this.horizontal = rows.map((row) => Hint.countsForCells(row));
+    this.vertical = columns.map((col) => Hint.countsForCells(col));
+  };
 
-  cells.forEach(function(cell) {
-    if (cell) {
-      currentSequence++;
-    } else {
-      if (currentSequence > 0) {
-        result.push(currentSequence);
-        currentSequence = 0;
+  static countsForCells(cells) {
+    const result = [];
+    let currentSequence = 0;
+
+    cells.forEach((cell) => {
+      if (cell) {
+        currentSequence++;
+      } else {
+        if (currentSequence > 0) {
+          result.push(currentSequence);
+          currentSequence = 0;
+        }
       }
+    });
+    if (currentSequence > 0) {
+      result.push(currentSequence);
     }
-  });
-  if (currentSequence > 0) {
-    result.push(currentSequence);
+
+    if (result.length === 0) {
+      result.push(0);
+    }
+
+    return result;
   }
 
-  if (result.length === 0) {
-    result = [0];
-  }
-
-  return result;
-};
+}
 
 module.exports = Hint;
