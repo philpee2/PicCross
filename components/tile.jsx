@@ -18,7 +18,7 @@ const Tile = React.createClass({
 
     const classNames = classnames('tile', {
       'filled': tile.filled,
-      'flagged': tile.flagged,
+      'flagged glyphicon glyphicon-remove': tile.flagged,
       'fifth-column': highlight,
     });
     return (
@@ -26,6 +26,7 @@ const Tile = React.createClass({
         className={classNames}
         onClick={this.handleClick}
       >
+        &nbsp;
       </div>
     );
   }

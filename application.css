@@ -4,6 +4,9 @@
   border: 1px solid black;
   padding: 2px;
   display: inline-block;
+  color: #8e44ad;
+  padding-left: 6px;
+  padding-top: 6px;
 }
 
 .flagged {
