@@ -3,12 +3,12 @@ import Tile from './tile';
 import BoardModel from '../models/board';
 import classnames from 'classnames';
 
-const propTypes = {
-  board: PropTypes.instanceOf(BoardModel).isRequired,
-  updateGame: PropTypes.func.isRequired,
-};
-
 export default class Board extends React.Component {
+
+  static propTypes = {
+    board: PropTypes.instanceOf(BoardModel).isRequired,
+    updateGame: PropTypes.func.isRequired,
+  };
 
   tilesForRow(index) {
     return this.props.board.grid[index].map( (tile, j) => {
@@ -44,5 +44,3 @@ export default class Board extends React.Component {
     );
   }
 }
-
-Board.propTypes = propTypes;
