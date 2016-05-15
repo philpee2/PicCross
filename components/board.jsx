@@ -45,4 +45,4 @@ const Board = React.createClass({
   }
 });
 
-module.exports = Board;
+export default Board;

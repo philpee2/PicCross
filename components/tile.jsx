@@ -32,4 +32,4 @@ const Tile = React.createClass({
   }
 });
 
-module.exports = Tile;
+export default Tile;

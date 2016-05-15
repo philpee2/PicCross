@@ -50,4 +50,4 @@ class Hint {
 
 }
 
-module.exports = Hint;
+export default Hint;

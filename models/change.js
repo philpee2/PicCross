@@ -19,4 +19,4 @@ class Change {
 }
 
 
-module.exports = Change;
+export default Change;

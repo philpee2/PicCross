@@ -20,4 +20,4 @@ LeftHint.propTypes = {
   hint: React.PropTypes.array.isRequired,
 };
 
-module.exports = LeftHint;
+export default LeftHint;

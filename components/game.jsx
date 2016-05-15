@@ -108,4 +108,4 @@ const Game = React.createClass({
   }
 });
 
-module.exports = Game;
+export default Game;

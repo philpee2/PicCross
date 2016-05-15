@@ -20,4 +20,4 @@ TopHint.propTypes = {
   hint: React.PropTypes.array.isRequired,
 };
 
-module.exports = TopHint;
+export default TopHint;
