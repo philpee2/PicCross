@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 function LeftHint({ hint }) {
   return (
@@ -17,7 +17,7 @@ function LeftHint({ hint }) {
 }
 
 LeftHint.propTypes = {
-  hint: React.PropTypes.array.isRequired,
+  hint: PropTypes.array.isRequired,
 };
 
 export default LeftHint;

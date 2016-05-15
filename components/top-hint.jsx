@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 function TopHint({ hint }) {
   return (
@@ -17,7 +17,7 @@ function TopHint({ hint }) {
 };
 
 TopHint.propTypes = {
-  hint: React.PropTypes.array.isRequired,
+  hint: PropTypes.array.isRequired,
 };
 
 export default TopHint;

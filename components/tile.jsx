@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import TileModel from '../models/tile';
 import classnames from 'classnames';
 
 const Tile = React.createClass({
   propTypes: {
-    tile: React.PropTypes.instanceOf(TileModel).isRequired,
-    updateGame: React.PropTypes.func.isRequired,
-    highlight: React.PropTypes.bool.isRequired,
+    tile: PropTypes.instanceOf(TileModel).isRequired,
+    updateGame: PropTypes.func.isRequired,
+    highlight: PropTypes.bool.isRequired,
   },
 
   handleClick(e) {

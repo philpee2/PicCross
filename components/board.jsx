@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Tile from './tile';
 import BoardModel from '../models/board';
 import classnames from 'classnames';
@@ -6,8 +6,8 @@ import classnames from 'classnames';
 const Board = React.createClass({
 
   propTypes: {
-    board: React.PropTypes.instanceOf(BoardModel).isRequired,
-    updateGame: React.PropTypes.func.isRequired
+    board: PropTypes.instanceOf(BoardModel).isRequired,
+    updateGame: PropTypes.func.isRequired
   },
 
   tilesForRow(index) {
