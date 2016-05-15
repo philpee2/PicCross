@@ -1,6 +1,6 @@
-const React = require('react'),
-  ReactDOM = require('react-dom'),
-  Game = require('./components/game');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Game from './components/game';
 
 const ReactPicCross = React.createClass({
   render() {

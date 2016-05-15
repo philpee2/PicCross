@@ -1,8 +1,8 @@
-const React = require('react'),
-  Board = require('./board'),
-  TopHint = require('./top-hint'),
-  LeftHint = require('./left-hint'),
-  BoardModel = require('../models/board');
+import React from 'react';
+import Board from './board';
+import TopHint from './top-hint';
+import LeftHint from './left-hint';
+import BoardModel from '../models/board';
 
 const Game = React.createClass({
   getInitialState() {

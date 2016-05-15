@@ -1,6 +1,6 @@
-const { times, sample, isEqual } = require('lodash'),
-  Hint = require('./hint'),
-  Tile = require('./tile');
+import { times, sample, isEqual } from 'lodash';
+import Hint from './hint';
+import Tile from './tile';
 
 class Board {
 

@@ -1,7 +1,7 @@
-const React = require('react'),
-  Tile = require('./tile'),
-  BoardModel = require('../models/board'),
-  classnames = require('classnames');
+import React from 'react';
+import Tile from './tile';
+import BoardModel from '../models/board';
+import classnames from 'classnames';
 
 const Board = React.createClass({
 

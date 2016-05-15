@@ -1,4 +1,4 @@
-const { times } = require('lodash');
+import { times } from 'lodash';
 
 // Invert the given grid. This turns an array of rows into an array of columns
 function invert(grid) {

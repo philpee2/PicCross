@@ -1,6 +1,6 @@
-const React = require('react'),
-  TileModel = require('../models/tile'),
-  classnames = require('classnames');
+import React from 'react';
+import TileModel from '../models/tile';
+import classnames from 'classnames';
 
 const Tile = React.createClass({
   propTypes: {

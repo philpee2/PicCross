@@ -1,4 +1,4 @@
-const Change = require('./change');
+import Change from './change';
 
 class Tile {
 
