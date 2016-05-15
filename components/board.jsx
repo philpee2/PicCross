@@ -3,12 +3,12 @@ import Tile from './tile';
 import BoardModel from '../models/board';
 import classnames from 'classnames';
 
-const Board = React.createClass({
+const propTypes = {
+  board: PropTypes.instanceOf(BoardModel).isRequired,
+  updateGame: PropTypes.func.isRequired,
+};
 
-  propTypes: {
-    board: PropTypes.instanceOf(BoardModel).isRequired,
-    updateGame: PropTypes.func.isRequired
-  },
+export default class Board extends React.Component {
 
   tilesForRow(index) {
     return this.props.board.grid[index].map( (tile, j) => {
@@ -21,11 +21,11 @@ const Board = React.createClass({
         />
       );
     });
-  },
+  }
 
   isFifth(index) {
     return (index % 5 === 0) && (index !== 0);
-  },
+  }
 
   render() {
     return (
@@ -43,6 +43,6 @@ const Board = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default Board;
+Board.propTypes = propTypes;

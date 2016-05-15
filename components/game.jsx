@@ -4,24 +4,33 @@ import TopHint from './top-hint';
 import LeftHint from './left-hint';
 import BoardModel from '../models/board';
 
-const Game = React.createClass({
-  getInitialState() {
+export default class Game extends React.Component {
+
+  constructor(props) {
+    super(props);
+
     const initialBoardSize = 10;
     const board = this.newBoard(initialBoardSize);
-    return {
+    this.state = {
       board: board,
       boardSize: initialBoardSize,
     };
-  },
+
+    this.newBoard = this.newBoard.bind(this);
+    this.updateBoardSize = this.updateBoardSize.bind(this);
+    this.updateGame = this.updateGame.bind(this);
+    this.reset = this.reset.bind(this);
+    this.undo = this.undo.bind(this);
+  }
 
   newBoard(boardSize = this.state.boardSize) {
     return new BoardModel(boardSize);
-  },
+  }
 
   updateBoardSize(e) {
     const newSize = Number(e.target.value);
     this.setState({boardSize: newSize});
-  },
+  }
 
   updateGame(tile, isFlagging) {
     const board = this.state.board;
@@ -31,25 +40,25 @@ const Game = React.createClass({
       board.toggleFill(tile);
     }
     this.setState({ board: board });
-  },
+  }
 
   componentDidUpdate() {
     if (this.state.board.won()) {
       alert('You win!');
       this.reset();
     }
-  },
+  }
 
   reset() {
     const board = this.newBoard();
     this.setState({ board: board });
-  },
+  }
 
   undo() {
     const board = this.state.board;
     board.undo();
     this.setState({ board: board });
-  },
+  }
 
   render() {
     const board = this.state.board;
@@ -106,6 +115,4 @@ const Game = React.createClass({
       </div>
     );
   }
-});
-
-export default Game;
+}

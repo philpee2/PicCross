@@ -2,16 +2,17 @@ import React, { PropTypes } from 'react';
 import TileModel from '../models/tile';
 import classnames from 'classnames';
 
-const Tile = React.createClass({
-  propTypes: {
-    tile: PropTypes.instanceOf(TileModel).isRequired,
-    updateGame: PropTypes.func.isRequired,
-    highlight: PropTypes.bool.isRequired,
-  },
+const propTypes = {
+  tile: PropTypes.instanceOf(TileModel).isRequired,
+  updateGame: PropTypes.func.isRequired,
+  highlight: PropTypes.bool.isRequired,
+};
+
+export default class Tile extends React.Component {
 
   handleClick(e) {
     this.props.updateGame(this.props.tile, (e.altKey || e.metaKey || e.shiftKey) );
-  },
+  }
 
   render() {
     const { tile, highlight } = this.props;
@@ -24,12 +25,14 @@ const Tile = React.createClass({
     return (
       <div
         className={classNames}
-        onClick={this.handleClick}
+        onClick={this.handleClick.bind(this)}
       >
         &nbsp;
       </div>
     );
   }
-});
+}
+
+Tile.propTypes = propTypes;
 
 export default Tile;
